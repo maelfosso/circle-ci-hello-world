@@ -29,5 +29,5 @@ workflows:
     jobs:
       # - welcome/run
       - print-hello
-      - print-world
+      - print-world:
           requires: [print-hello]
