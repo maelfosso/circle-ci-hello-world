@@ -20,6 +20,13 @@ jobs:
     - run:
         name: echo world
         command: echo WORLD
+  print-my-name:
+    docker:
+    - image: circleci/node:13.8.0
+    steps:
+    - run:
+        name: echo name
+        command: echo ${UDACITY_NAME}
 
 
 workflows:
@@ -31,3 +38,6 @@ workflows:
       - print-hello
       - print-world:
           requires: [print-hello]
+      - print-my-name:
+          requires: 
+          - print-world
