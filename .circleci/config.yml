@@ -12,9 +12,9 @@ jobs:
     steps:
     - run:
         name: save_hello_world
-        command: echo "hello world" > /tmp/save_hello_world_output/output.txt
+        command: echo "hello world" > ~/output.txt
     - persist_to_workspace:
-        root: /tmp/save_hello_world_output
+        root: ~/
         paths:
         - output.txt
   print_output_file:
@@ -22,10 +22,10 @@ jobs:
     - image: circleci/node:13.8.0
     steps:
     - attach_workspace:
-        at: /tmp/save_hello_world_output
+        at: ~/
     - run:
         name: print_output
-        command: cat /tmp/save_hello_world_output/output.txt
+        command: cat ~/output.txt
 
 
 
